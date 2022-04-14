@@ -1,7 +1,7 @@
 import faker from '@faker-js/faker';
 
 import { Product } from './product.model';
-import { CreateProductDto, UpdateProductDto } from './product.dto';
+import { CreateProductDto, UpdateProductDto, FindProductDto } from './product.dto';
 
 export const products: Product[] = [];
 
@@ -23,7 +23,7 @@ export const addProduct = (data: CreateProductDto): Product => {
 }
 
 
-export const updateProduct = (id: string, changes: UpdateProductDto ): Product => {
+export const updateProduct = (id: Product['id'], changes: UpdateProductDto ): Product => {
   const index = products.findIndex(item => item.id === id);
   const prevData = products[index];
   products[index] = {
@@ -31,4 +31,15 @@ export const updateProduct = (id: string, changes: UpdateProductDto ): Product =
     ...changes
   }
   return products[index];
+}
+
+
+export const findProducts = (dto: FindProductDto): Product[] => {
+  // code
+  // dto.color = 'blue';
+  // dto.isNew = true;
+  // dto.tags = [];
+  // dto.tags?.pop();
+  // dto.tags?.push();
+  return products;
 }
